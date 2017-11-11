@@ -9,4 +9,5 @@ app_name = "app"
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^upload/$', views.upload_file, name='upload'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    url(r'^reader/', include(views.reader.urls)),
+    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
