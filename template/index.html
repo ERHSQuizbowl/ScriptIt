@@ -1,18 +1,37 @@
 <html>
-    <head>
-        {% load bootstrap4 %}
-        {% bootstrap_css %}
-        {% bootstrap_javascript %}
-    </head>
+<head>
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
 
-    <body>
-    <div id="content" class="container-fluid">
-        <div class="row">
-            <div id="pageContent" class="col-8 col-sm-9 col-md-9 col-lg-10 col-xl-10">
-                <p> Welcome!</p>
-            </div>
+<body>
+<div id="content" class="container-fluid">
+    <div class="row">
+        <div id="pageContent" class="col-8 col-sm-9 col-md-9 col-lg-10 col-xl-10">
+            <p>Welcome! Script is an interactive application that allows you to practice memorizing a script
+                or speech with Cortana.
+            </p>
+
+            <p> To get started, click below</p>
+
+            <!--<form method="post" action="{% url 'app:upload_benefit_form' %}"
+                  enctype="multipart/form-data">
+                {% csrf_token %}
+                <label class="btn btn-primary m-3" for="my-file-selector">
+                    <input id="my-file-selector" name="myfile" type="file"
+                           onchange="$('#upload-file-info').html(this.files[0].name)">
+                    Add File
+                </label>
+                <span class='label label-info' id="upload-file-info">No file selected</span>
+                <label class="btn btn-primary">
+                    <button id="mySubmitButton" type="submit"></button>
+                    Upload</label>
+                <input type="hidden" name="backup" value="False">
+            </form>-->
+            <br>
         </div>
     </div>
-    </body>
-
+</div>
+</body>
 </html>
