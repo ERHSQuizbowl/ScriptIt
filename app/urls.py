@@ -10,4 +10,4 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^upload/$', views.upload_file, name='upload'),
     url(r'^reader/', include(views.reader.urls)),
-    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

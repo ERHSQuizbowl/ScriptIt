@@ -1,26 +1,53 @@
 <html>
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    {% load static %}
     {% load bootstrap4 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"/>
+
 </head>
 
 <body>
 <div id="content" class="container-fluid">
-    <div class="row">
-        <div id="pageContent" class="col-8 col-sm-9 col-md-9 col-lg-10 col-xl-10">
-            <p>Welcome! Script is an interactive application that allows you to practice memorizing a script
-                or speech with Cortana.
-            </p>
+    <div id="landing">
+        <div class="front-area-table">
+            <div class="front-area-tablecell">
+                <div class="container-fluid bg-1 text-center">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="front-text">
+                                <h2>ScriptIT</h2>
+                                <br>
+                                <h4> Memorize Scripts with Ease</h4>
+                                <br>
+                                <form action="{% url 'app:upload' %}" method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <i class="fa fa-upload fa-2x"></i><span class="name">No file selected</span>
+                                    <input style="display: none" name="myFile" type="file">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </form>
 
-            <p> To get started, click below</p>
-        <form action="{% url 'app:upload' %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <input name="myFile" type="file">
-            <input type="submit" value="Upload" />
-        </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 </body>
 </html>
+
+<script>
+    $("i").click(function () {
+        $("input[type='file']").trigger('click');
+    });
+
+    $('input[type="file"]').on('change', function () {
+        var val = $(this).val();
+        $(this).siblings('span').text(val);
+    })
+</script>

@@ -9,7 +9,7 @@ from app.scripts.parse_script import ParseScript
 def main(request):
     filename = request.GET.get("file")
     file = MEDIA_ROOT + '/' + filename
-
     parser = ParseScript(file)
-    parser.parse('vinai')
-    return render(request, 'reader.html')
+    parser.parse(file)
+
+    return render(request, 'reader.html', context={'sound': MEDIA_ROOT + '/sound.mp3'})

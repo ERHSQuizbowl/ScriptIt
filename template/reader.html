@@ -1,11 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Practice your script below!</title>
 </head>
 <body>
     <p> Hehiwhe</p>
-
+    <!--<audio controls autoplay>-->
+          <!--<source src="/Users/vinairachakonda/Projects/ScriptIt/media/sound.mp3" type="audio/mp3">-->
+    <!--</audio>-->
+    <input type="file">
+    <audio controls id="myAudio" autoplay></audio>
 </body>
-</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script>
+     audio_file.onchange = function(){
+     var files = this.files;
+     var file = URL.createObjectURL(files[0]);
+              audio_player.src = file;
+    audio_player.play();
+};
+</script>
