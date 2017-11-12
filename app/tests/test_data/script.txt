@@ -1,5 +1,1 @@
-vinai: Hey, How are you
-ken: I'm doing alright
-vinai: good
-ken: nice
-vinai: hahah
+vinai
