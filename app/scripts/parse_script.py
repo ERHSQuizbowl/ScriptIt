@@ -1,6 +1,7 @@
 import requests
 from requests import Session, Request
 from scriptit.settings import MEDIA_ROOT
+from docx import Document
 
 
 class ParseScript:
@@ -28,3 +29,60 @@ class ParseScript:
     def parse(self, name):
         input_file = open(self.file)
         self.text_to_speech(input_file.read())
+
+    """
+    Function takes an input file and scraps the text
+    """
+    def parse_text(input_file, role):
+        """
+        Word doc File Inputs
+        """
+        if input_file.endswith('.docx'):
+            print "this is a Word document"
+            document = Document(input_file)
+            document.save('test.docx')  #we can now access the doc file in python
+
+            content = []
+            my_part = []
+            other_parts = []
+
+            for para in document.paragraphs:  # parses paragraphs
+                text = para.text.encode('ascii', 'ignore')
+                content.append(text)
+
+            val = 0  #counter
+
+            while val < len(content):
+                if content[val] == role:
+                    my_part.append(content[val+1])
+                    val+=2
+                else:
+                    other_parts.append(content[val+1])
+                    val+=2
+            return (my_part, other_parts)
+
+        else:
+            print "Error: Input a valid Word Docx"
+
+        """
+        Function detects arrors and returns a list of indexes of words said incorrectly
+        """
+        def detect_errors(my_part, speech_input):
+            #remove all punctuation in my_part of the scene and transcribed speech
+            punctuation = ['(',')','?',':',';',',','.','!','/','"',"'"]
+            my_part = my_part.translate(None, punctuation)
+            my_part_list = my_part.split()
+
+            speech_input_list = speech_input_list.translate(None, punctuation)
+            speech_input_list = speech_input.split()
+
+            #compare your part of speech with generated text from speech as you practise
+            count  = 0
+            toggle_list = []
+            for p in my_part_list:
+
+                if p != speech_input_list[count]:
+                    toggle_list.append(count)
+
+                count += 1
+                    return toggle_list   #returns list of indices of words gotten wrong
