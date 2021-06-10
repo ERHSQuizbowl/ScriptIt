@@ -2,7 +2,7 @@ appdirs==1.4.3
 beautifulsoup4==4.4.1
 certifi==2017.7.27.1
 chardet==3.0.4
-Django==1.11.6
+Django==2.2.24
 django-bootstrap4==0.0.1
 django-templatetag-sugar==0.1
 html5lib==0.999
